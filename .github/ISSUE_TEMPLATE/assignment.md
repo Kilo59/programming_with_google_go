@@ -7,7 +7,8 @@ assignees: ''
 
 ---
 
-# Week NUMBER Assignment: `ASSIGNMENT_NAME`
+# Assignment: `ASSIGNMENT_NAME`
+# Week: NUMBER
 > Assignent Instructions
 
 - [ ] Criteria1
