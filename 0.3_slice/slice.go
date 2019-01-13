@@ -28,6 +28,7 @@ func getUserInput(promptMessage string) (userInt int) {
 func main() {
 	// capacity of 8 to account for number of tests required in review criteria
 	// Underlying array will not need to expand unless more than 5 integers are entered
+	// Assignment calls for initializing with length of 3
 	var integerSlice = make([]int, 3, 8)
 
 	for {
