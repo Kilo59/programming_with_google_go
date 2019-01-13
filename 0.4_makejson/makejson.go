@@ -9,9 +9,10 @@ func getUserInput(promptMessage string) (userInputStr string) {
 	var userInputValue string
 
 	fmt.Println(promptMessage)
-	_, err := fmt.Scanln(&userInputValue)
+	itemsScanned, err := fmt.Scanln(&userInputValue)
 	if err != nil {
-		fmt.Println("Could not parse input")
+		fmt.Println("\tCould not parse input")
+		fmt.Printf("\tItems scanned %d\n", itemsScanned)
 		os.Exit(1)
 	}
 	return userInputValue
