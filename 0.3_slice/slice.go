@@ -25,5 +25,14 @@ func getUserInput(promptMessage string) (userInt int) {
 }
 
 func main() {
-	getUserInput("Enter an Integer:")
+	// capacity of 8 to account for number of tests required in review criteria
+	// Underlying array will not need to expand unless more than 5 integers are entered
+	var integerSlice = make([]int, 3, 8)
+
+	for {
+		userInput := getUserInput("Enter an Integer (X to quit):")
+		integerSlice = append(integerSlice, userInput)
+		fmt.Println(integerSlice)
+	}
+
 }
