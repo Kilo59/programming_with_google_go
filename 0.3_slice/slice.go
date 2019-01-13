@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"sort"
 	"strconv"
 )
 
@@ -32,6 +33,7 @@ func main() {
 	for {
 		userInput := getUserInput("Enter an Integer (X to quit):")
 		integerSlice = append(integerSlice, userInput)
+		sort.Ints(integerSlice)
 		fmt.Println(integerSlice)
 	}
 
