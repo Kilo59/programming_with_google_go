@@ -25,5 +25,5 @@ func getUserInput(promptMessage string) (userInt int) {
 }
 
 func main() {
-
+	getUserInput("Enter an Integer:")
 }
