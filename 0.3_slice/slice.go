@@ -38,5 +38,4 @@ func main() {
 		sort.Ints(integerSlice)
 		fmt.Println(integerSlice)
 	}
-
 }
