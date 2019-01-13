@@ -31,6 +31,7 @@ func main() {
 	// Assignment calls for initializing with length of 3
 	var integerSlice = make([]int, 3, 8)
 
+	// alternatively could have set condition of loop to be userInput != "X"
 	for {
 		userInput := getUserInput("Enter an Integer (X to quit):")
 		integerSlice = append(integerSlice, userInput)
