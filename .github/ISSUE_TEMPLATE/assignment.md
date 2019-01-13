@@ -1,15 +1,16 @@
 ---
 name: Assignment
 about: Track Assignments
-title: "[Coures].[Module] [assignment name]"
+title: "COURSE.MODULE ASSIGNMENT_NAME"
 labels: assignment
 assignees: ''
 
 ---
 
-# Week [number] Assignment: `[assignment name]`
+# Week NUMBER Assignment: `ASSIGNMENT_NAME`
 > Assignent Instructions
 
-- [ ] Criteria 1
-- [ ] Criteria 2
-- [ ] Criteria 3
+- [ ] Criteria1
+- [ ] Criteria2
+- [ ] Criteria3
+- [ ] Criteria4
