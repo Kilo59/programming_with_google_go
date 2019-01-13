@@ -3,20 +3,27 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 )
 
-func checkUserArgs() (userArgs []string) {
-	if len(os.Args) < 2 {
-		fmt.Println("Please rerun slice.go providing integers as arguments")
-		fmt.Println("Example: go run slice.go 1 22 58")
+func getUserInput(promptMessage string) (userInt int) {
+	var userInputValue string
+
+	fmt.Println(promptMessage)
+	fmt.Scanln(&userInputValue)
+
+	userInt, err := strconv.Atoi(userInputValue)
+	if err != nil {
+		if userInputValue == "X" {
+			fmt.Println("Exiting loop")
+			os.Exit(0)
+		}
+		fmt.Println("Could not parse Integer")
 		os.Exit(1)
 	}
-	return os.Args[1:]
+	return userInt
 }
 
 func main() {
-	userArgs := checkUserArgs()
-	fmt.Println(userArgs)
-	fmt.Println(userArgs[0])
-	fmt.Println(userArgs[1])
+
 }
