@@ -2,8 +2,14 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"os"
 )
+
+type name struct {
+	fname string
+	lname string
+}
 
 func stopOnError(err error, errorMessage string) {
 	if err != nil {
@@ -12,15 +18,20 @@ func stopOnError(err error, errorMessage string) {
 	}
 }
 
-func main() {
-	fmt.Println("read")
-	f, err := os.Create("outfile.txt")
-	stopOnError(err, "Could not create file")
+func readLines(fileName string) (contents []byte) {
+	contents, err := ioutil.ReadFile(fileName)
+	stopOnError(err, "Error reading file")
+	return contents
+}
 
-	barr := []byte{1, 2, 3}
-	nb1, err := f.Write(barr)
-	stopOnError(err, "Could not write byte array")
-	nb2, err := f.WriteString("Hello World")
-	stopOnError(err, "Could not write string")
-	fmt.Println(nb1, nb2)
+func main() {
+	// var nameSlice = make([]name, 10)
+	fileContents := readLines("contacts.txt")
+
+	for i, b := range fileContents {
+		fmt.Println(i, string(b))
+	}
+
+	// fmt.Println(fileContents)
+	// fmt.Println(string(fileContents))
 }
