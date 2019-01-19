@@ -19,12 +19,13 @@ func stopOnError(err error, errorMessage string) {
 }
 
 func readLines(fileName string) (linesSlice []string) {
-	// TODO: check the size of the file before making slice
-	var strSlice = make([]string, 0, 100)
-
 	file, err := os.Open(fileName)
 	stopOnError(err, "Error reading file")
 	defer file.Close()
+
+	// Use the size of the file to determine length of the slice
+	fileInfo, _ := file.Stat()
+	var strSlice = make([]string, 0, fileInfo.Size())
 
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
