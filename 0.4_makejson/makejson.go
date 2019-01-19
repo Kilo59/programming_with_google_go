@@ -1,23 +1,18 @@
 package main
 
 import (
+	"bufio"
 	"encoding/json"
 	"fmt"
 	"os"
 )
 
-func getUserInput(promptMessage string) (userInputStr string) {
-	var userInputValue string
-
+func getUserInputLine(promptMessage string) (userInputStr string) {
+	// using bufio to avoid "problems" with fmt.Scan and spaces
+	scanner := bufio.NewScanner(os.Stdin)
 	fmt.Println(promptMessage)
-	// Scan breaks on spaces
-	itemsScanned, err := fmt.Scanln(&userInputValue)
-	if err != nil {
-		fmt.Println("\tCould not parse input!")
-		fmt.Printf("\tItems scanned %d\n", itemsScanned)
-		os.Exit(1)
-	}
-	return userInputValue
+	scanner.Scan()
+	return scanner.Text()
 }
 
 func mapToJSON(mapInput map[string]string) (jsonB []byte) {
@@ -31,10 +26,8 @@ func mapToJSON(mapInput map[string]string) (jsonB []byte) {
 
 func main() {
 	addressMap := map[string]string{
-		"name":    getUserInput("Enter a name:"),
-		"address": getUserInput("Enter an address:")}
-	// remove debug statement
-	fmt.Println(addressMap)
+		"name":    getUserInputLine("Enter a name:"),
+		"address": getUserInputLine("Enter an address:")}
 
 	addressMapJSON := mapToJSON(addressMap)
 	fmt.Println(string(addressMapJSON))
