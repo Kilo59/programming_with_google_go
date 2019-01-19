@@ -1,8 +1,8 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
-	"io/ioutil"
 	"os"
 )
 
@@ -18,20 +18,27 @@ func stopOnError(err error, errorMessage string) {
 	}
 }
 
-func readLines(fileName string) (contents []byte) {
-	contents, err := ioutil.ReadFile(fileName)
+func readLines(fileName string) (linesSlice []string) {
+	// TODO: check the size of the file before making slice
+	var strSlice = make([]string, 0, 100)
+
+	file, err := os.Open(fileName)
 	stopOnError(err, "Error reading file")
-	return contents
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		strSlice = append(strSlice, scanner.Text())
+	}
+	return strSlice
 }
 
 func main() {
 	// var nameSlice = make([]name, 10)
-	fileContents := readLines("contacts.txt")
+	lines := readLines("contacts.txt")
 
-	for i, b := range fileContents {
-		fmt.Println(i, string(b))
+	for i, v := range lines {
+		fmt.Println(i, v)
 	}
 
-	// fmt.Println(fileContents)
-	// fmt.Println(string(fileContents))
 }
