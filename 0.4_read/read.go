@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 )
 
 type name struct {
@@ -11,10 +12,17 @@ type name struct {
 	lname string
 }
 
+func getUserInput(promptMessage string) (userInputStr string) {
+	var userInputValue string
+	fmt.Println(promptMessage)
+	fmt.Scanln(&userInputValue)
+	return userInputValue
+}
+
 func stopOnError(err error, errorMessage string) {
 	if err != nil {
 		fmt.Println(errorMessage)
-		os.Exit(1)
+		panic(err)
 	}
 }
 
@@ -35,11 +43,20 @@ func readLines(fileName string) (linesSlice []string) {
 }
 
 func main() {
-	// var nameSlice = make([]name, 10)
-	lines := readLines("contacts.txt")
+	lines := readLines(getUserInput("Filename?:"))
+	var nameSlice = make([]name, 0, len(lines))
 
-	for i, v := range lines {
-		fmt.Println(i, v)
+	// could have done this during readLines() function
+	for _, v := range lines {
+		var n name
+		names := strings.Fields(v)
+		n.fname = names[0]
+		n.lname = names[1]
+		nameSlice = append(nameSlice, n)
 	}
 
+	fmt.Println("# First\tLast\n------------")
+	for i, v := range nameSlice {
+		fmt.Printf("%d %s %s\n", i, v.fname, v.lname)
+	}
 }
