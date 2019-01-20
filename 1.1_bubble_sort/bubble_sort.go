@@ -7,23 +7,27 @@ import (
 
 // Swap ...
 // Swaps positions of 2 adjacent elements
+// Assignment Requirement
 func Swap(index int, intSlice []int) {
 	fmt.Println("Swap position")
 }
 
-func sweep() {
+func sweep(intSlice *[]int) {
 	fmt.Println("Sweep")
 }
 
 // BubbleSort ...
+// Assignment Requirement
 func BubbleSort(intSlice []int) {
 	sorted := false
-	fmt.Println(intSlice)
+	n := len(intSlice)
 	for sorted == false {
-		for i := range intSlice {
-			fmt.Println(i, intSlice[i])
-
+		for i := 0; i < n-1; i++ {
+			if intSlice[i+1] < intSlice[i] {
+				intSlice[i+1], intSlice[i] = intSlice[i], intSlice[i+1]
+			}
 		}
+		fmt.Println("Sweep")
 		sorted = sort.IntsAreSorted(intSlice)
 	}
 	fmt.Println("Sorted!\n", intSlice)
@@ -50,7 +54,7 @@ func userInputSlice(size int) (intSlice []int) {
 
 func main() {
 	// intSlice := userInputSlice(10)
-	intSlice := []int{1, 2, 3, 4, 5}
-	fmt.Println(intSlice)
+	intSlice := []int{6, 2, 5, 4, 1}
+	// fmt.Println(intSlice)
 	BubbleSort(intSlice)
 }
