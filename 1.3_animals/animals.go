@@ -33,8 +33,22 @@ func (a Animal) Speak() {
 }
 
 func main() {
+	animals := map[string]Animal{
+		"cow":   Animal{"grass", "walk", "moo"},
+		"bird":  Animal{"worms", "fly", "peep"},
+		"snake": Animal{"mice", "slither", "hsss"},
+	}
+
 	for {
 		a, r := userRequest()
 		fmt.Println(a, r)
+		switch r {
+		case "eat":
+			animals[a].Eat()
+		case "move":
+			animals[a].Move()
+		case "speak":
+			animals[a].Speak()
+		}
 	}
 }
