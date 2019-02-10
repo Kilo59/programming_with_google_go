@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 // func getUserInput(promptMessage string) (userInt float64) {
 // 	var userInputValue string
 // 	fmt.Print(promptMessage)
@@ -19,5 +21,27 @@ package main
 // 	scanner.Scan()
 // 	return scanner.Text()
 // }
+
+// Animal ...
+type Animal struct {
+	food       string
+	locomotion string
+	noise      string
+}
+
+// Eat ...
+func (a Animal) Eat() {
+	fmt.Println(a.food)
+}
+
+// Move ...
+func (a Animal) Move() {
+	fmt.Println(a.locomotion)
+}
+
+// Speak ...
+func (a Animal) Speak() {
+	fmt.Println(a.noise)
+}
 
 func main() {}
