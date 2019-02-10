@@ -41,7 +41,6 @@ func main() {
 
 	for {
 		a, r := userRequest()
-		fmt.Println(a, r)
 		switch r {
 		case "eat":
 			animals[a].Eat()
