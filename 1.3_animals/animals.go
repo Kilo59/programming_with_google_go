@@ -2,25 +2,13 @@ package main
 
 import "fmt"
 
-// func getUserInput(promptMessage string) (userInt float64) {
-// 	var userInputValue string
-// 	fmt.Print(promptMessage)
-// 	fmt.Scanln(&userInputValue)
-// 	userInt, err := strconv.ParseFloat(userInputValue, 64)
-// 	if err != nil {
-// 		fmt.Println("Could not parse Integer")
-// 		os.Exit(1)
-// 	}
-// 	return userInt
-// }
-
-// func getUserInputLine(promptMessage string) (userInputStr string) {
-// 	// using bufio to avoid "problems" with fmt.Scan and spaces
-// 	scanner := bufio.NewScanner(os.Stdin)
-// 	fmt.Println(promptMessage)
-// 	scanner.Scan()
-// 	return scanner.Text()
-// }
+func userRequest() (animal string, attributeRequest string) {
+	var a string
+	var r string
+	fmt.Print(">")
+	fmt.Scan(&a, &r)
+	return a, r
+}
 
 // Animal ...
 type Animal struct {
@@ -44,4 +32,7 @@ func (a Animal) Speak() {
 	fmt.Println(a.noise)
 }
 
-func main() {}
+func main() {
+	a, r := userRequest()
+	fmt.Println(a, r)
+}
