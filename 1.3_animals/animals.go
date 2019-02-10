@@ -33,6 +33,8 @@ func (a Animal) Speak() {
 }
 
 func main() {
-	a, r := userRequest()
-	fmt.Println(a, r)
+	for {
+		a, r := userRequest()
+		fmt.Println(a, r)
+	}
 }
